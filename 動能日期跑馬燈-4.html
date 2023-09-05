@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>日期與活動跑馬燈</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffecf5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #b8860b;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      background-color: #f9f900;
+      padding: 10px;
+    }
+
+   .counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    }
+
+   
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 30s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .activity-link {
+      color: #ae0000;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #b8860b;
+      color: #fbd9d;
+    }
+
+    .logo {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>桃園平鎮市觀光導覽協會</h1>
+     <p>歡迎參加我們的活動！</p>
+  </header>
+
+  <div class="carousel">
+    <div class="carousel-content" id="carouselContent">
+     </div>
+  </div>
+  <div class="marquee-container">
+    <div class="marquee-content" id="marqueeContent">
+      <p></p>
+    </div>
+  </div>
+   <div class="logo">
+           
+<img src="D:\平鎮觀光文化導覽協會網頁說明會\518797.jpg" width="100" height="100" />
+    
+    
+</div>
+
+  <section id="activities">
+    <h2>&nbsp;&nbsp;&nbsp;活動設計</h2>
+    <div class="activity">
+      <h3><a href="file:///D:/%E5%B9%B3%E9%8E%AE%E8%A7%80%E5%85%89%E6%96%87%E5%8C%96%E5%B0%8E%E8%A6%BD%E5%8D%94%E6%9C%83%E7%B6%B2%E9%A0%81%E8%AA%AA%E6%98%8E%E6%9C%83/%E6%B4%BB%E5%8B%95%E5%90%8D%E7%A8%B1.html" class="activity-link">&nbsp;&nbsp;&nbsp;&nbsp;活動名稱</a></h3>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;日期：2023年9月9日</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;地點：平鎮區義民褒忠祠</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;報名：<a href="file:///D:/%E5%B9%B3%E9%8E%AE%E8%A7%80%E5%85%89%E6%96%87%E5%8C%96%E5%B0%8E%E8%A6%BD%E5%8D%94%E6%9C%83%E7%B6%B2%E9%A0%81%E8%AA%AA%E6%98%8E%E6%9C%83/%E5%A0%B1%E5%90%8D.html">&nbsp;&nbsp;&nbsp;&nbsp;點此報名</a></p>
+    </div>
+    <div class="counter">
+    <h3>參訪人數統計</h3>
+    <div class="counter-value" id="counterValue">0</div>
+  </div>
+
+  <div class="feedback">
+    <h3><a href="file:///D:/%E5%B9%B3%E9%8E%AE%E8%A7%80%E5%85%89%E6%96%87%E5%8C%96%E5%B0%8E%E8%A6%BD%E5%8D%94%E6%9C%83%E7%B6%B2%E9%A0%81%E8%AA%AA%E6%98%8E%E6%9C%83/feedback.htm" class="activity-link">&nbsp;&nbsp;&nbsp;&nbsp;意見回饋</a></h3>
+    <form id="feedbackForm">
+      <!-- ...之前的意見回饋表單 -->
+    </form>
+    <div id="feedbackMessage"></div>
+  </div>
+    <!-- 可加入更多活動設計位置 -->
+  </section>
+
+  <footer>
+    <p>版權所有 &copy; 桃園市平鎮觀光導覽協會</p>
+  </footer>
+
+  <script>
+    function updateMarquee() {
+      const marqueeContent = document.getElementById("marqueeContent");
+      const currentDate = new Date();
+      const dateString = currentDate.toDateString();
+
+      const activities = [
+        "<a href='#' class='activity-link'>活動1：2023年7月29日 - 地點:從義民廟新光路尾端下車→乙未安平鎮之役的古戰場及中山堂→鑊篤生態埤塘→爬階梯上石門大圳走相思步道→回鑊篤埤塘搭車返回義民廟。</a>",
+        "<a href='#' class='activity-link'>活動2：2023年9月9日 - 地點:義民廟出發到→乙未公園到大湳尾出發到→雙連坡碉堡公園。</a>",
+              ];
+
+      let content = dateString + " - ";
+      content += activities.join(" | ");
+
+      marqueeContent.innerHTML = content;
+    }
+
+    // 更新日期與活動資訊
+    updateMarquee();
+    // 每秒更新日期與活動資訊
+    setInterval(updateMarquee, 1000);
+  </script>
+</body>
+</html>
